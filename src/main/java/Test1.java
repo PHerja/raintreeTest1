@@ -7,7 +7,10 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Test1 {
     //private static final int RECORD_COUNT=3380000;
@@ -72,15 +75,41 @@ public class Test1 {
         Test1.file = file;
     }
 
-    public static void barChart() {
-
+    private static void barChart() {
+        Map<Long, Long> frequencyMap =
+                list.stream().collect(Collectors.groupingBy(Function.identity(),
+                        Collectors.counting()));
+        int i=0;
+        for (Map.Entry<Long, Long> entry : frequencyMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+            if (i>=9) break;
+            i++;
+        }
     }
 
-    public static void countOfArmstrongNumbers() {
+    private static void countOfArmstrongNumbers() {
         List<Long> armstrongNumbersList = new ArrayList<>();
+        long remainder,sum,digits,temp;
+        for (long index : list) {
+            sum = 0; temp = index; digits = 0;
+            while (temp != 0) {
+                digits++;
+                temp = temp/10;
+            }
+            temp = index;
+            while (temp != 0) {
+                remainder = temp%10;
+                sum = sum + power(remainder, digits);
+                temp = temp/10;
+            }
+            if ( index == sum ){
+                armstrongNumbersList.add(index);
+            }
+        }
+        System.out.println("count of Armstrong numbers= " + armstrongNumbersList.size());
     }
 
-    public static void countOfPrimeNumbersBigInt(){
+    private static void countOfPrimeNumbersBigInt(){
         List<Long> primeNumbersList = new ArrayList<>();
         BigInteger bigInteger;
         for (long index : list) {
@@ -89,7 +118,13 @@ public class Test1 {
                 primeNumbersList.add(index);
             }
         }
-        System.out.println("count of prime numbers= " + primeNumbersList.size());
+        System.out.println("count of Prime numbers= " + primeNumbersList.size());
+    }
+    private static long power(long n, long r) {
+        long c, p = 1;
+        for (c = 1; c <= r; c++)
+            p = p*n;
+        return p;
     }
 
 }
