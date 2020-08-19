@@ -5,11 +5,10 @@ import java.util.stream.Collectors;
 
 public class BarChart {
     public static void barChart() {
-        ArrayList<Long> keys = new ArrayList<>(tenMostCommon().keySet());
+        ArrayList<Long> keys = new ArrayList<>((tenMostCommon().keySet()));
         ArrayList<Integer> values = new ArrayList<>(tenMostCommon().values());
         Integer howManyLines = values.get(0);
         Integer fixer = howManyLines - 1;
-
         while (howManyLines > 0) {
             System.out.print("           ");
             for (int i = 0; i <= 198; i++) {
@@ -22,8 +21,21 @@ public class BarChart {
             howManyLines--;
             fixer--;
         }
-
-
+        int counter=12-keys.get(0).toString().length()/2;
+        int j =10-counter;
+        int index=0;
+        for ( int i = j; i <= 220; i++) {
+            if (counter  == 0) {
+                System.out.print(keys.get(index));
+                if (index>=9){break;}
+                //counter=23-keys.get(index).toString().length()/2-keys.get(index+1).toString().length()/2;
+                counter=24-(keys.get(index).toString().length()+keys.get(index+1).toString().length())/2;
+                index++;
+            }
+            System.out.print(" ");
+            counter--;
+        }
+        System.out.println();
     }
 
     public static Map tenMostCommon() {

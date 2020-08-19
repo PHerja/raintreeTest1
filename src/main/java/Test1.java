@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Test1 {
     //private static final int RECORD_COUNT=3380000;
-    private static final int RECORD_COUNT = 33800;
+    private static final int RECORD_COUNT = 338000;
 
     public static List<Long> list = new ArrayList<>();
     private static File file;
@@ -49,14 +49,14 @@ public class Test1 {
         return 1 + (long) (Math.random() * (Long.MAX_VALUE - 1));
     }
     private static long randomGenerator2() {
-        return 1 + (long) (Math.random() * (1000000 - 1));
+        return 1 + (long) (Math.random() * (1000 - 1));
     }
 
     private static void saveIntoFile() throws IOException {
         FileWriter writer = new FileWriter(file);
         int i = 0;
         while (i < RECORD_COUNT) {
-            writer.write(randomGenerator2() + " ");
+            writer.write(randomGenerator() + " ");
             i++;
         }
         writer.close();
