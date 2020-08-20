@@ -18,7 +18,7 @@ public class Methods {
     }
 
     public void countOfArmstrongNumbers() {
-        long count = 0;
+        int count = 0;
         for (long index : set) {
             if(isArmstrongNumber(index)){
                 count++;

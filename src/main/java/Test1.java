@@ -10,13 +10,13 @@ import java.util.Scanner;
 
 public class Test1 {
     //private static final int RECORD_COUNT=3380000;
-    private static Long recordCount = 3380000L;
+    private static Long recordCount = 33800L;
     public static List<Long> list = new ArrayList<>();
     private static File file;
     private static String fileName;
 
     public static void main(String[] args) throws IOException {
-        try {
+        /*try {
             if (args[0].isEmpty()) {
                 System.out.println("Filename is needed ! ");
                 System.exit(0);
@@ -27,9 +27,8 @@ public class Test1 {
             }
         }catch(Exception e) {
             System.out.println("Something went wrong !!!");
-        }
+        }*/
         createFile();
-        saveIntoFile();
         long start = System.currentTimeMillis();
         loadFromFile();
         long end = System.currentTimeMillis();
@@ -51,22 +50,11 @@ public class Test1 {
 
     }
 
-    private static void createFile() {
-        /*Scanner input = new Scanner(System.in);
+    private static void createFile() throws IOException {
+        Scanner input = new Scanner(System.in);
         System.out.print("Enter filename: ");
-        String fileName = input.next();
-        input.close();*/
+        fileName = input.next();
         setFile(new File(fileName + ".txt"));
-    }
-
-    private static long randomGenerator() {
-        return 1 + (long) (Math.random() * (Long.MAX_VALUE - 1));
-    }
-    private static long randomGenerator2() {
-        return 1 + (long) (Math.random() * (1000 - 1));
-    }
-
-    private static void saveIntoFile() throws IOException {
         FileWriter writer = new FileWriter(file);
         int i = 0;
         while (i < recordCount) {
@@ -74,6 +62,14 @@ public class Test1 {
             i++;
         }
         writer.close();
+        input.close();
+    }
+
+    private static long randomGenerator() {
+        return 1 + (long) (Math.random() * (Long.MAX_VALUE - 1));
+    }
+    private static long randomGenerator2() {
+        return 1 + (long) (Math.random() * (1000 - 1));
     }
 
     private static void loadFromFile() throws FileNotFoundException {
