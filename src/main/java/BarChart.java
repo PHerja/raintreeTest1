@@ -9,6 +9,7 @@ public class BarChart {
         ArrayList<Integer> values = new ArrayList<>(tenMostCommon().values());
         Integer howManyLines = values.get(0);
         Integer fixer = howManyLines - 1;
+        System.out.println();
         while (howManyLines > 0) {
             System.out.print("           ");
             for (int i = 0; i <= 198; i++) {
@@ -28,7 +29,6 @@ public class BarChart {
             if (counter  == 0) {
                 System.out.print(keys.get(index));
                 if (index>=9){break;}
-                //counter=23-keys.get(index).toString().length()/2-keys.get(index+1).toString().length()/2;
                 counter=24-(keys.get(index).toString().length()+keys.get(index+1).toString().length())/2;
                 index++;
             }

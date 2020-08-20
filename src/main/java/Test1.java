@@ -10,7 +10,8 @@ import java.util.Scanner;
 
 public class Test1 {
     //private static final int RECORD_COUNT=3380000;
-    private static final int RECORD_COUNT = 338000;
+    private static final int RECORD_COUNT = 3380000;
+    ;
 
     public static List<Long> list = new ArrayList<>();
     private static File file;

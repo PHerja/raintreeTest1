@@ -1,8 +1,11 @@
 package main.java;
 
 import java.math.BigInteger;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Methods {
+    private static Set<Long> set=new HashSet<>(Test1.list);
     private static boolean isArmstrongNumber(long number){
         long originalNumber = number, remainder, result = 0;
         while (originalNumber != 0)
@@ -16,7 +19,7 @@ public class Methods {
 
     public static void countOfArmstrongNumbers() {
         long count = 0;
-        for (long index : Test1.list) {
+        for (long index : set) {
             if(isArmstrongNumber(index)){
                 count++;
             }
@@ -27,7 +30,7 @@ public class Methods {
     public static void countOfPrimeNumbers(){
         BigInteger bigInteger;
         int count=0;
-        for (long index : Test1.list) {
+        for (long index : set) {
             bigInteger=BigInteger.valueOf(index);
             if (bigInteger.isProbablePrime(5)) {
                 count++;
