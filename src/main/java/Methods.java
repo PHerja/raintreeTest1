@@ -18,6 +18,7 @@ public class Methods {
     }
 
     public void countOfArmstrongNumbers() {
+        long start = System.currentTimeMillis();
         int count = 0;
         for (long index : set) {
             if(isArmstrongNumber(index)){
@@ -25,9 +26,12 @@ public class Methods {
             }
         }
         System.out.println("count of Armstrong numbers= " + count);
+        long end = System.currentTimeMillis();
+        System.out.println((end - start) / 1000f + " seconds to calculate Armstrong numbers.");
     }
 
     public void countOfPrimeNumbers(){
+        long start = System.currentTimeMillis();
         BigInteger bigInteger;
         int count=0;
         for (long index : set) {
@@ -37,6 +41,8 @@ public class Methods {
             }
         }
         System.out.println("count of Prime numbers= " + count);
+        long end = System.currentTimeMillis();
+        System.out.println((end - start) / 1000f + " seconds to calculate Prime numbers.");
     }
 
 }

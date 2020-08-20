@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class BarChart {
     public void barChart() {
+        long start = System.currentTimeMillis();
         ArrayList<Long> keys = new ArrayList<>((tenMostCommon().keySet()));
         ArrayList<Integer> values = new ArrayList<>(tenMostCommon().values());
         Integer howManyLines = values.get(0);
@@ -22,6 +23,9 @@ public class BarChart {
             howManyLines--;
             fixer--;
         }
+        /*
+          Adding bottom line so that numbers appear in the middle of bars.
+         */
         int counter=12-keys.get(0).toString().length()/2;
         int j =10-counter;
         int index=0;
@@ -35,7 +39,9 @@ public class BarChart {
             System.out.print(" ");
             counter--;
         }
+        long end = System.currentTimeMillis();
         System.out.println();
+        System.out.println((end - start) / 1000f + " seconds to calculate bar chart.");
     }
 
     public Map tenMostCommon() {
