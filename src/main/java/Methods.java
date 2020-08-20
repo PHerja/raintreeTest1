@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Methods {
-    private static Set<Long> set=new HashSet<>(Test1.list);
-    private static boolean isArmstrongNumber(long number){
+    private  Set<Long> set=new HashSet<>(Test1.list);
+    private  boolean isArmstrongNumber(long number){
         long originalNumber = number, remainder, result = 0;
         while (originalNumber != 0)
         {
@@ -17,7 +17,7 @@ public class Methods {
         return result == number;
     }
 
-    public static void countOfArmstrongNumbers() {
+    public void countOfArmstrongNumbers() {
         long count = 0;
         for (long index : set) {
             if(isArmstrongNumber(index)){
@@ -27,7 +27,7 @@ public class Methods {
         System.out.println("count of Armstrong numbers= " + count);
     }
 
-    public static void countOfPrimeNumbers(){
+    public void countOfPrimeNumbers(){
         BigInteger bigInteger;
         int count=0;
         for (long index : set) {

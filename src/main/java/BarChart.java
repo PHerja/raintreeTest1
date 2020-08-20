@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class BarChart {
-    public static void barChart() {
+    public void barChart() {
         ArrayList<Long> keys = new ArrayList<>((tenMostCommon().keySet()));
         ArrayList<Integer> values = new ArrayList<>(tenMostCommon().values());
         Integer howManyLines = values.get(0);
@@ -38,7 +38,7 @@ public class BarChart {
         System.out.println();
     }
 
-    public static Map tenMostCommon() {
+    public Map tenMostCommon() {
         Map<Long, Integer> map = new HashMap<>();
         for (Long t : Test1.list) {
             Integer val = map.get(t);

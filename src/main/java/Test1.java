@@ -10,39 +10,52 @@ import java.util.Scanner;
 
 public class Test1 {
     //private static final int RECORD_COUNT=3380000;
-    private static final int RECORD_COUNT = 3380000;
-    ;
-
+    private static Long recordCount = 3380000L;
     public static List<Long> list = new ArrayList<>();
     private static File file;
+    private static String fileName;
 
     public static void main(String[] args) throws IOException {
+        try {
+            if (args[0].isEmpty()) {
+                System.out.println("Filename is needed ! ");
+                System.exit(0);
+            }
+            fileName = args[0] + ".txt";
+            if (!args[1].isEmpty()) {
+                recordCount = Long.parseLong(args[1]) / 20;
+            }
+        }catch(Exception e) {
+            System.out.println("Something went wrong !!!");
+        }
         createFile();
         saveIntoFile();
         long start = System.currentTimeMillis();
         loadFromFile();
         long end = System.currentTimeMillis();
         System.out.println((end - start) / 1000f + " seconds to read the file.");
+        BarChart barChart= new BarChart();
+        Methods methods = new Methods();
         long start1 = System.currentTimeMillis();
-        BarChart.barChart();
+        barChart.barChart();
         long end1 = System.currentTimeMillis();
         System.out.println((end1 - start1) / 1000f + " seconds to calculate bar chart.");
         long start2 = System.currentTimeMillis();
-        Methods.countOfPrimeNumbers();
+        methods.countOfPrimeNumbers();
         long end2 = System.currentTimeMillis();
         System.out.println((end2 - start2) / 1000f + " seconds to calculate Prime numbers.");
         long start3 = System.currentTimeMillis();
-        Methods.countOfArmstrongNumbers();
+        methods.countOfArmstrongNumbers();
         long end3 = System.currentTimeMillis();
         System.out.println((end3 - start3) / 1000f + " seconds to calculate Armstrong numbers.");
 
     }
 
     private static void createFile() {
-        Scanner input = new Scanner(System.in);
+        /*Scanner input = new Scanner(System.in);
         System.out.print("Enter filename: ");
         String fileName = input.next();
-        input.close();
+        input.close();*/
         setFile(new File(fileName + ".txt"));
     }
 
@@ -56,7 +69,7 @@ public class Test1 {
     private static void saveIntoFile() throws IOException {
         FileWriter writer = new FileWriter(file);
         int i = 0;
-        while (i < RECORD_COUNT) {
+        while (i < recordCount) {
             writer.write(randomGenerator() + " ");
             i++;
         }
